@@ -1,3 +1,6 @@
+// The code in this file is used to build my resume
+
+// The following code defines a variable (bio) that contains my biographical information
 var bio = {
   "name": "Michael Sanderson",
   "role": "Strata Administrator",
@@ -9,10 +12,11 @@ var bio = {
   },
   "welcomeMessage": "Skilled professional in front end web development",
   "skills": ["Strata", "MS Office", "HTML", "CSS", "Python", "JavaScript"],
-  "bioPic": "Insert Pic Here !"
+  "bioPic": "images/profile.jpg"
 
 }
 
+// The following code is a function that contains code that will define variables and append my biographical data to the resume
 bio.display = function() {
   $("#header").prepend(HTMLbioPic.replace('%data%', bio.bioPic));
   $("#header").prepend(HTMLheaderRole.replace('%data%', bio.role));
@@ -41,6 +45,7 @@ bio.display = function() {
 };
 bio.display();
 
+// The following code defines a variable (work) that contains my work experience
 var work = {
   "jobs": [
     {
@@ -49,54 +54,90 @@ var work = {
       "location": "Houston, TX",
       "dates": "January 2010 - Current",
       "description": "Responsible for the support of the Strata application that is part of the AT&T collections system. This support also includes project and trial implementations."
+    },
+
+    {
+      "employer": "AT&T",
+      "title": "Senior Programmer",
+      "location": "Dallas, TX",
+      "dates": "January 2002 - December 2009",
+      "description": "Responsible for the support of the Collections Data Warehouse. This support included the generation of canned business intelligence reports as well as various ad-hoc queries."
+    },
+
+    {
+      "employer": "AT&T",
+      "title": "Coach Leader",
+      "location": "Houston, TX",
+      "dates": "December 1998 - December 2001",
+      "description": "Responsible for the management and development of a team of collections representatives."
     }
   ]
 }
 
+// The following code is a function that contains code that will define variables and append my job experience to the resume
 work.display = function() {
-    $("#workExperience").append(HTMLworkStart.replace('%data%', work.workstart));
 
     for (var i = 0; i < work.jobs.length; i++) {
-        $('#workExperience').append(HTMLworkEmployer.replace('%data%', work.jobs.employer));
-        $('#workExperience').append(HTMLworkTitle.replace('%data%', work.jobs.title));
-        $('#workExperience').append(HTMLworkDates.replace('%data%', work.jobs.dates));
-        $('#workExperience').append(HTMLworkLocation.replace('%data%', work.jobs.location));
-        $('#workExperience').append(HTMLworkDescription.replace('%data%', work.jobs.description));
+
+    $("#workExperience").append(HTMLworkStart);
+
+      var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
+      var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[i].title);
+      var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[i].location);
+      var formattedDates = HTMLworkDates.replace("%data%", work.jobs[i].dates);
+      var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[i].description);
+
+      $(".work-entry:last").append(formattedEmployer, formattedTitle, formattedLocation, formattedDates, formattedDescription);
+
     }
 
 };
 work.display();
 
+// The following code defines a variable (projects) that contains key projects i've worked on
 var projects = {
   "projects": [
     {
       "title": "One Collect",
       "dates": "2017",
       "description": "This project leverages new versions of the software in place now, and allows collections on all portfolios of customer accounts at AT&T."
+    },
+
+    {
+      "title": "Enterprise Telecommunications Risk Assessment Collections System (eTRACS)",
+      "dates": "2005",
+      "description": "This project created from the ground up a new software based risk assessment engine and collector workflow system."
     }
   ]
 }
 
+// The following code is a function that contains code that will define variables and append my key projects to the resume
 projects.display = function() {
-    $("#projects").append(HTMLprojectStart.replace('%data%', projects.projectstart));
 
     for (var i = 0; i < projects.projects.length; i++) {
-        $('#projects').append(HTMLprojectTitle.replace('%data%', projects.projects.title));
-        $('#projects').append(HTMLprojectDates.replace('%data%', projects.projects.dates));
-        $('#projects').append(HTMLprojectDescription.replace('%data%', projects.projects.description));
+
+    $("#projects").append(HTMLprojectStart);
+
+      var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
+      var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
+      var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+
+      $(".project-entry:last").append(formattedTitle, formattedDates, formattedDescription);
+
     }
 
 };
 projects.display();
 
+// The following code defines a variable (education) that contains my earned college degree and current online course
 var education = {
   "schools": [
     {
       "name": "Texas A&M University",
-      "city": "College Station, TX, US",
-      "dates": "1997",
+      "location": "College Station, TX, US",
       "degree": "BBA",
-      "major": ["Management"]
+      "major": ["Management"],
+      "dates": "1997"
     }
   ],
   "onlineCourses": [
@@ -104,116 +145,42 @@ var education = {
       "title": "Intro to Programming",
       "school": "Udacity",
       "dates": "2017",
-      "url": "Insert URL Here !"
+      "url": "http://www.udacity.com"
     }
   ]
 }
 
+// The following code is a function that contains code that will define variables and append my college degree and online course to the resume
 education.display = function() {
-  $("#education").append(HTMLschoolStart.replace('%data%', education.schoolStart));
 
-  var name = HTMLschoolName.replace('%data%', education.schools.name);
-  var degree = HTMLschoolDegree.replace('%data%', education.schools.degree);
-  var dates = HTMLschoolDates.replace('%data%', education.schools.dates);
-  var location = HTMLschoolLocation.replace('%data%', education.schools.city);
-  var major = HTMLschoolMajor.replace('%data%', education.schools.major);
+    for (var i = 0; i < education.schools.length; i++) {
 
-  var schoolsArray = [name, degree, dates, location, major];
+    $("#education").append(HTMLschoolStart);
 
-  for (var i = 0; i < schoolsArray.length; i++) {
-      $("#education").append(schoolsArray[i]);
-  }
+      var formattedName = HTMLschoolName.replace("%data%", education.schools[i].name);
+      var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
+      var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
+      var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major);
+      var formattedDates = HTMLschoolDates.replace("%data%", education.schools[i].dates);
 
-  $("#education").append(HTMLonlineClasses.replace('%data%', education.onlineClasses));
+      $(".education-entry:last").append(formattedName, formattedLocation, formattedDates, formattedDegree, formattedMajor);
 
-  var title = HTMLonlineTitle.replace('%data%', education.onlineCourses.title);
-  var school = HTMLonlineSchool.replace('%data%', education.onlineCourses.school);
-  var daes_online = HTMLonlineDates.replace('%data%', education.onlineCourses.dates);
-  var url = HTMLonlineURL.replace('%data%', education.onlineCourses.url);
+    };
 
-  var onlineArray = [title, school, dates_online, url];
+    for (var i = 0; i < education.onlineCourses.length; i++) {
 
-  for (var i = 0; i < onlineArray.length; i++) {
-      $("#education").append(onlineArray[i]);
-  }
+      var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title);
+      var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
+      var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].dates);
+      var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url);
+
+      $(".education-entry:last").append(HTMLonlineClasses);
+      $(".education-entry:last").append(formattedTitle, formattedSchool, formattedDates, formattedURL);
+
+    }
 
 };
 education.display();
 
-var map;
-
-function initializeMap() {
-
-  var locations;
-
-  var mapOptions = {
-    disableDefaultUI: true
-  };
-
-map = new google.maps.Map(document.querySelector('#mapDiv'), mapOptions);
-
-function locationFinder() {
-  var locations = [];
-
-  locations.push(bio.contacts.location);
-
-  education.schools.forEach(function(school){
-    locations.push(school.location);
-  });
-
-  work.jobs.forEach(function(job){
-    locations.push(job.location);
-  });
-
-  return locations;
-}
-
-function createMapMarker(placeData) {
-
-  var lat = placeData.geometry.location.lat();
-  var lon = placeData.geometry.location.lng();
-  var name = placeData.formatted_address;
-  var bounds = window.mapBounds;
-
-  var marker = new google.maps.Marker({
-    map: map,
-    position: placeData.geometry.location,
-    title: name
-  });
-
-  var infoWindow = new google.maps.InfoWindow({
-    content: name
-  });
-
-  bounds.extend(new google.maps.LatLng(lat, lon));
-  map.fitBounds(bounds);
-  map.setCenter(bounds.getCenter());
-}
-
-function callback(results, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    createMapMarker(results[0]);
-  }
-}
-
-function pinPoster(locations) {
-
-  var service = new google.maps.places.PlacesService(map);
-
-    locations.forEach(function(place){
-
-    var request = {
-      query: place
-    };
-
-    service.textSearch(request, callback);
-  });
-}
-
-window.mapBounds = new google.maps.LatLngBounds();
-
-locations = locationFinder();
-
-pinPoster(locations);
-
-}
+// The following code adds a Google map of the locations in which I've lived and worked to my resume
+$("#mapDiv").append(googleMap);
