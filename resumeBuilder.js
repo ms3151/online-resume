@@ -14,7 +14,7 @@ var bio = {
   "skills": ["Strata", "MS Office", "HTML", "CSS", "Python", "JavaScript"],
   "bioPic": "images/profile.jpg"
 
-}
+};
 
 // The following code is a function that contains code that will define variables and append my biographical data to the resume
 bio.display = function() {
@@ -72,7 +72,7 @@ var work = {
       "description": "Responsible for the management and development of a team of collections representatives."
     }
   ]
-}
+};
 
 // The following code is a function that contains code that will define variables and append my job experience to the resume
 work.display = function() {
@@ -109,7 +109,7 @@ var projects = {
       "description": "This project created from the ground up a new software based risk assessment engine and collector workflow system."
     }
   ]
-}
+};
 
 // The following code is a function that contains code that will define variables and append my key projects to the resume
 projects.display = function() {
@@ -148,7 +148,7 @@ var education = {
       "url": "http://www.udacity.com"
     }
   ]
-}
+};
 
 // The following code is a function that contains code that will define variables and append my college degree and online course to the resume
 education.display = function() {
@@ -165,7 +165,7 @@ education.display = function() {
 
       $(".education-entry:last").append(formattedName, formattedLocation, formattedDates, formattedDegree, formattedMajor);
 
-    };
+    }
 
     for (var i = 0; i < education.onlineCourses.length; i++) {
 
