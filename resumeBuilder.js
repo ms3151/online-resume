@@ -11,13 +11,13 @@ var bio = {
     },
     "welcomeMessage": "Skilled professional in front end web development",
     "skills": ["Strata", "MS Office", "HTML", "CSS", "Python", "JavaScript"],
-    "bioPic": "images/profile.jpg"
+    "biopic": "images/profile.jpg"
 
 };
 
 // The following code is a function that contains code that will define variables and append my biographical data to the resume
 bio.display = function() {
-    $("#header").prepend(HTMLbioPic.replace('%data%', bio.bioPic));
+    $("#header").prepend(HTMLbioPic.replace('%data%', bio.biopic));
     $("#header").prepend(HTMLheaderRole.replace('%data%', bio.role));
     $("#header").prepend(HTMLheaderName.replace('%data%', bio.name));
 
@@ -97,13 +97,15 @@ var projects = {
     "projects": [{
             "title": "One Collect",
             "dates": "2017",
-            "description": "This project leverages new versions of the software in place now, and allows collections on all portfolios of customer accounts at AT&T."
+            "description": "This project leverages new versions of the software in place now, and allows collections on all portfolios of customer accounts at AT&T.",
+            "images": ["images/profile.jpg"]
         },
 
         {
             "title": "Enterprise Telecommunications Risk Assessment Collections System (eTRACS)",
             "dates": "2005",
-            "description": "This project created from the ground up a new software based risk assessment engine and collector workflow system."
+            "description": "This project created from the ground up a new software based risk assessment engine and collector workflow system.",
+            "images": ["images/profile.jpg"]
         }
     ]
 };
@@ -118,8 +120,9 @@ projects.display = function() {
         var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
         var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
         var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+        var formattedImages = HTMLprojectImage.replace("%data%", projects.projects[i].images);
 
-        $(".project-entry:last").append(formattedTitle, formattedDates, formattedDescription);
+        $(".project-entry:last").append(formattedTitle, formattedDates, formattedDescription, formattedImages);
 
     }
 
@@ -132,7 +135,7 @@ var education = {
         "name": "Texas A&M University",
         "location": "College Station, TX, US",
         "degree": "BBA",
-        "major": ["Management"],
+        "majors": ["Management"],
         "dates": "1997"
     }],
     "onlineCourses": [{
@@ -153,7 +156,7 @@ education.display = function() {
         var formattedName = HTMLschoolName.replace("%data%", education.schools[i].name);
         var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
         var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
-        var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major);
+        var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[i].majors);
         var formattedDates = HTMLschoolDates.replace("%data%", education.schools[i].dates);
 
         $(".education-entry:last").append(formattedName, formattedLocation, formattedDates, formattedDegree, formattedMajor);
